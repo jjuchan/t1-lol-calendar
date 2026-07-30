@@ -1,0 +1,25 @@
+{
+  "name": "t1-lol-calendar",
+  "version": "1.0.0",
+  "description": "T1 LCK/MSI/Worlds/EWC/First Stand/KeSPA Cup 1군 경기만 모은 구독형 ICS 캘린더 생성기",
+  "private": true,
+  "type": "commonjs",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "generate": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "ical-generator": "^7.2.0",
+    "node-ical": "^0.27.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
