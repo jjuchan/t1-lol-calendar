@@ -106,7 +106,7 @@ npm run typecheck
 배포가 끝나면 아래 형태의 URL에서 파일을 받을 수 있습니다.
 
 ```
-https://<github-username>.github.io/<repository-name>/t1.ics
+https://jjuchan.github.io/t1-lol-calendar/t1.ics
 ```
 
 Actions 탭에서 워크플로우를 한 번 수동 실행(`Run workflow`)해서 첫 배포를 트리거하세요.
@@ -114,7 +114,7 @@ Actions 탭에서 워크플로우를 한 번 수동 실행(`Run workflow`)해서
 ## Apple Calendar 구독 방법
 
 1. 아이폰 **설정 → 캘린더 → 계정 → 계정 추가 → 기타 → 구독 캘린더 추가**로 이동합니다.
-2. 서버 주소에 위의 `https://<github-username>.github.io/<repository-name>/t1.ics` 를
+2. 서버 주소에 위의 `https://jjuchan.github.io/t1-lol-calendar/t1.ics` 를
    입력합니다.
 3. 저장하면 완료입니다. 이후 GitHub Actions가 원본을 갱신할 때마다 iOS가 주기적으로(보통
    몇 시간 단위) 자동으로 다시 불러옵니다. 즉시 반영하고 싶다면 캘린더 앱을 당겨서 새로고침하면
