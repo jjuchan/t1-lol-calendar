@@ -42,41 +42,30 @@ function resolveStatus(match: T1Match): MatchStatus {
   return "unknown";
 }
 
-const STATUS_EMOJI: Record<MatchStatus, string> = {
-  scheduled: "🆚",
-  live: "🔴",
-  win: "✅",
-  loss: "❌",
-  "no-result": "⚠️",
-  postponed: "⏸️",
-  cancelled: "🚫",
-  unknown: "🆚",
-};
-
 /**
  * Apple Calendar 월간 보기/위젯/Apple Watch에서 잘리지 않도록 짧게 구성한다(15~20자 목표).
- * 리그명과 시간은 SUMMARY에 넣지 않는다(시간은 캘린더가 알아서 보여주고, 리그명은
- * DESCRIPTION에 넣는다).
+ * 이모지는 기기별 폰트/렌더링에 따라 자리를 많이 차지해 오히려 잘림을 유발하므로 넣지 않고,
+ * 팀명(약어)과 스코어만 표시한다. 리그명과 시간도 SUMMARY에 넣지 않는다(시간은 캘린더가
+ * 알아서 보여주고, 리그명은 DESCRIPTION에 넣는다).
  */
 export function buildSummary(match: T1Match): string {
   const opponent = getTeamDisplay(match.opponent.code, match.opponent.name).short;
   const status = resolveStatus(match);
-  const emoji = STATUS_EMOJI[status];
 
   switch (status) {
     case "win":
     case "loss":
     case "no-result":
-      return `${emoji} T1 ${match.t1Score}:${match.opponentScore} ${opponent}`;
+      return `T1 ${match.t1Score}:${match.opponentScore} ${opponent}`;
     case "postponed":
-      return `${emoji} T1-${opponent} (연기)`;
+      return `T1-${opponent} (연기)`;
     case "cancelled":
-      return `${emoji} T1-${opponent} (취소)`;
+      return `T1-${opponent} (취소)`;
     case "live":
     case "scheduled":
     case "unknown":
     default:
-      return `${emoji} T1-${opponent}`;
+      return `T1-${opponent}`;
   }
 }
 
