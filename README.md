@@ -13,14 +13,6 @@ npm run generate   # public/t1.ics 생성/갱신
 - `npm run dev` : 컴파일 없이 바로 실행
 - `npm run typecheck` : 타입 검사만
 
-## 구독 URL
-
-```
-https://jjuchan.github.io/t1-lol-calendar/t1.ics
-```
-
-아이폰: **설정 → 캘린더 → 계정 추가 → 기타 → 구독 캘린더 추가** → 위 URL 입력.
-
 ## 자동 갱신
 
 `.github/workflows/update.yml`이 3시간마다 자동 실행되어 `public/t1.ics`를 갱신하고
