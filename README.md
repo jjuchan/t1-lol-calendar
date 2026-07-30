@@ -2,6 +2,8 @@
 
 T1 1군 경기(LCK, MSI, Worlds, EWC, First Stand, KeSPA Cup)만 모은 구독형 ICS 캘린더.
 
+<img src="docs/screenshot.jpg" alt="Apple Calendar 구독 화면" width="360" />
+
 ## 설치 / 실행
 
 ```bash
