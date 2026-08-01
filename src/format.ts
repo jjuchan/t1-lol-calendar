@@ -1,6 +1,6 @@
 import { getTeamDisplay } from "./config/teamNames";
 import { logger } from "./logger";
-import type { CalendarEventInput, T1Match } from "./types";
+import type { CalendarEventInput, GroupStandings, T1Match } from "./types";
 
 const KST_OFFSET_MS = 9 * 60 * 60 * 1000; // 한국 표준시(UTC+9, 서머타임 없음) 고정 오프셋
 
@@ -69,7 +69,19 @@ export function buildSummary(match: T1Match): string {
   }
 }
 
-export function buildDescription(match: T1Match): string {
+function buildStandingsLines(standings: GroupStandings): string[] {
+  if (standings.rows.length === 0) return [];
+
+  const lines: string[] = [];
+  lines.push(`${standings.groupName ?? "순위"}`);
+  for (const row of standings.rows) {
+    const setPart = row.setWins + row.setLosses > 0 ? ` (세트 ${row.setWins}-${row.setLosses})` : "";
+    lines.push(`${row.rank}위 ${row.code} ${row.wins}승${row.losses}패${setPart}`);
+  }
+  return lines;
+}
+
+export function buildDescription(match: T1Match, standings: GroupStandings | null = null): string {
   const opponent = getTeamDisplay(match.opponent.code, match.opponent.name).full;
   const status = resolveStatus(match);
 
@@ -79,6 +91,13 @@ export function buildDescription(match: T1Match): string {
   lines.push(`T1 vs ${opponent}`);
   lines.push("");
   lines.push(`Bo${match.bestOf}`);
+
+  const standingsLines = standings ? buildStandingsLines(standings) : [];
+  if (standingsLines.length > 0) {
+    lines.push("");
+    lines.push(...standingsLines);
+  }
+
   lines.push("");
   lines.push("경기 시작");
   lines.push(`${formatKstTime(match.startTime)} (KST)`);
@@ -105,13 +124,13 @@ export function buildDescription(match: T1Match): string {
   return lines.join("\n");
 }
 
-export function toCalendarEventInput(match: T1Match): CalendarEventInput {
+export function toCalendarEventInput(match: T1Match, standings: GroupStandings | null = null): CalendarEventInput {
   const durationMs = estimatedDurationMinutes(match.bestOf) * 60 * 1000;
   return {
     uid: match.uid,
     start: match.startTime,
     end: new Date(match.startTime.getTime() + durationMs),
     summary: buildSummary(match),
-    description: buildDescription(match),
+    description: buildDescription(match, standings),
   };
 }

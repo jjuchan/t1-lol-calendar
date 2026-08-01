@@ -7,6 +7,8 @@ import { toCalendarEventInput } from "./format";
 import { buildCalendar } from "./generate";
 import { logger } from "./logger";
 import { mergeWithExisting } from "./merge";
+import { buildT1GroupStandings } from "./standings";
+import type { GroupStandings } from "./types";
 
 const OUTPUT_PATH = path.resolve(process.cwd(), "public", "t1.ics");
 
@@ -28,7 +30,21 @@ async function main(): Promise<void> {
   const t1Matches = filterT1Matches(events);
   logger.info(`T1 1군 경기 ${t1Matches.length}건 필터링 완료`);
 
-  const calendarInputs = t1Matches.map(toCalendarEventInput);
+  const standingsByLeagueId = new Map<string, GroupStandings | null>();
+  for (const competition of enabled) {
+    if (!competition.showStandings) continue;
+    const standings = await buildT1GroupStandings(competition.leagueId);
+    standingsByLeagueId.set(competition.leagueId, standings);
+    logger.info(
+      standings
+        ? `${competition.name} 순위표: ${standings.groupName} ${standings.rows.length}팀`
+        : `${competition.name} 순위표 없음(그룹 미구성 기간이거나 조회 실패)`
+    );
+  }
+
+  const calendarInputs = t1Matches.map((match) =>
+    toCalendarEventInput(match, standingsByLeagueId.get(match.leagueId) ?? null)
+  );
   const merged = mergeWithExisting(calendarInputs, OUTPUT_PATH);
   const ics = buildCalendar(merged);
 

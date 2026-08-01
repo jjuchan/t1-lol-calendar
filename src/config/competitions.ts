@@ -17,16 +17,22 @@ export interface CompetitionConfig {
   leagueId: string;
   /** false로 두면 이 대회는 수집에서 제외된다. */
   enabled: boolean;
+  /**
+   * DESCRIPTION에 "T1이 속한 그룹 순위표"를 붙일지 여부.
+   * 정규시즌/조별리그처럼 순위표가 실제로 의미 있는 대회에서만 켠다.
+   * MSI/Worlds처럼 처음부터 토너먼트 대진표 방식인 대회는 순위 개념이 없어 꺼둔다.
+   */
+  showStandings: boolean;
 }
 
 export const COMPETITIONS: CompetitionConfig[] = [
-  { id: "lck", name: "LCK", leagueId: "98767991310872058", enabled: true },
-  { id: "msi", name: "MSI", leagueId: "98767991325878492", enabled: true },
-  { id: "worlds", name: "Worlds", leagueId: "98767975604431411", enabled: true },
-  { id: "ewc", name: "EWC", leagueId: "116838530616006090", enabled: true },
-  { id: "first_stand", name: "First Stand", leagueId: "113464388705111224", enabled: true },
-  { id: "kespa_cup", name: "KeSPA Cup", leagueId: "116929044967296666", enabled: true },
+  { id: "lck", name: "LCK", leagueId: "98767991310872058", enabled: true, showStandings: true },
+  { id: "msi", name: "MSI", leagueId: "98767991325878492", enabled: true, showStandings: false },
+  { id: "worlds", name: "Worlds", leagueId: "98767975604431411", enabled: true, showStandings: false },
+  { id: "ewc", name: "EWC", leagueId: "116838530616006090", enabled: true, showStandings: false },
+  { id: "first_stand", name: "First Stand", leagueId: "113464388705111224", enabled: true, showStandings: false },
+  { id: "kespa_cup", name: "KeSPA Cup", leagueId: "116929044967296666", enabled: true, showStandings: false },
   // 새 대회를 추가하려면 아래처럼 한 줄만 추가하면 된다. (leagueId는
   // https://esports-api.lolesports.com/persisted/gw/getLeagues?hl=en-US 응답에서 조회)
-  // { id: "rift_rivals", name: "Rift Rivals", leagueId: "...", enabled: true },
+  // { id: "rift_rivals", name: "Rift Rivals", leagueId: "...", enabled: true, showStandings: false },
 ];

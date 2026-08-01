@@ -35,6 +35,59 @@ export interface LolEsportsScheduleEvent {
   match?: LolEsportsMatch;
 }
 
+export interface LolEsportsTournament {
+  id: string;
+  slug: string;
+  startDate: string;
+  endDate: string;
+}
+
+interface LolEsportsStandingsTeam {
+  code: string;
+  name: string;
+  record?: { wins: number; losses: number; ties: number };
+}
+
+interface LolEsportsStandingsRanking {
+  ordinal: number;
+  teams: LolEsportsStandingsTeam[];
+}
+
+interface LolEsportsStandingsSection {
+  name: string;
+  type: string;
+  rankings?: LolEsportsStandingsRanking[];
+}
+
+interface LolEsportsStandingsStage {
+  name: string;
+  sections: LolEsportsStandingsSection[];
+}
+
+export interface LolEsportsStandingsResponse {
+  data: {
+    standings: {
+      stages: LolEsportsStandingsStage[];
+    }[];
+  };
+}
+
+/** DESCRIPTION에 표시할 순위표 한 줄. */
+export interface StandingsRow {
+  rank: number;
+  code: string;
+  wins: number;
+  losses: number;
+  setWins: number;
+  setLosses: number;
+}
+
+/** T1이 속한 그룹의 순위표. 그룹 구분이 없는 대회는 groupName이 null. */
+export interface GroupStandings {
+  groupName: string | null;
+  rows: StandingsRow[];
+}
+
 /** 어느 대회 설정에서 가져온 이벤트인지 태깅한 원본 이벤트. */
 export interface ScheduleEventWithCompetition extends LolEsportsScheduleEvent {
   competition: CompetitionConfig;
