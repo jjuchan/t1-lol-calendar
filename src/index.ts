@@ -7,8 +7,8 @@ import { toCalendarEventInput } from "./format";
 import { buildCalendar } from "./generate";
 import { logger } from "./logger";
 import { mergeWithExisting } from "./merge";
-import { buildT1GroupStandings } from "./standings";
-import type { GroupStandings } from "./types";
+import { buildLeagueStandingsContext, standingsAsOf } from "./standings";
+import type { LeagueStandingsContext } from "./standings";
 
 const OUTPUT_PATH = path.resolve(process.cwd(), "public", "t1.ics");
 
@@ -30,21 +30,23 @@ async function main(): Promise<void> {
   const t1Matches = filterT1Matches(events);
   logger.info(`T1 1군 경기 ${t1Matches.length}건 필터링 완료`);
 
-  const standingsByLeagueId = new Map<string, GroupStandings | null>();
+  const standingsContextByLeagueId = new Map<string, LeagueStandingsContext | null>();
   for (const competition of enabled) {
     if (!competition.showStandings) continue;
-    const standings = await buildT1GroupStandings(competition.leagueId);
-    standingsByLeagueId.set(competition.leagueId, standings);
+    const context = await buildLeagueStandingsContext(competition.leagueId);
+    standingsContextByLeagueId.set(competition.leagueId, context);
     logger.info(
-      standings
-        ? `${competition.name} 순위표: ${standings.groupName} ${standings.rows.length}팀`
+      context
+        ? `${competition.name} 순위표 컨텍스트 확보: ${context.groupName} ${context.groupCodes.length}팀 (경기별로 그 시점 순위를 계산)`
         : `${competition.name} 순위표 없음(그룹 미구성 기간이거나 조회 실패)`
     );
   }
 
-  const calendarInputs = t1Matches.map((match) =>
-    toCalendarEventInput(match, standingsByLeagueId.get(match.leagueId) ?? null)
-  );
+  const calendarInputs = t1Matches.map((match) => {
+    const context = standingsContextByLeagueId.get(match.leagueId) ?? null;
+    const standings = context ? standingsAsOf(context, match.startTime.toISOString()) : null;
+    return toCalendarEventInput(match, standings);
+  });
   const merged = mergeWithExisting(calendarInputs, OUTPUT_PATH);
   const ics = buildCalendar(merged);
 
