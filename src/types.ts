@@ -1,6 +1,5 @@
 import type { CompetitionConfig } from "./config/competitions";
 
-/** Riot LoL Esports API의 getSchedule 응답 중 팀 한 명(팀) 항목. */
 export interface LolEsportsTeam {
   name: string;
   code: string;
@@ -15,12 +14,10 @@ export interface LolEsportsMatch {
   teams: LolEsportsTeam[];
   strategy?: {
     type: string;
-    /** Bo1/Bo3/Bo5 등의 "3", "5" 값. */
     count: number;
   };
 }
 
-/** API가 내려줄 수 있는 상태값. 향후 신규 상태가 추가돼도 깨지지 않도록 string도 허용한다. */
 export type ScheduleEventState = "unstarted" | "inProgress" | "completed" | (string & {});
 
 export interface LolEsportsScheduleEvent {
@@ -72,7 +69,6 @@ export interface LolEsportsStandingsResponse {
   };
 }
 
-/** DESCRIPTION에 표시할 순위표 한 줄. */
 export interface StandingsRow {
   rank: number;
   code: string;
@@ -82,18 +78,15 @@ export interface StandingsRow {
   setLosses: number;
 }
 
-/** T1이 속한 그룹의 순위표. 그룹 구분이 없는 대회는 groupName이 null. */
 export interface GroupStandings {
   groupName: string | null;
   rows: StandingsRow[];
 }
 
-/** 어느 대회 설정에서 가져온 이벤트인지 태깅한 원본 이벤트. */
 export interface ScheduleEventWithCompetition extends LolEsportsScheduleEvent {
   competition: CompetitionConfig;
 }
 
-/** 필터링 + 정규화를 마친, T1이 참여하는 경기 하나. */
 export interface T1Match {
   uid: string;
   matchId: string;
@@ -111,7 +104,6 @@ export interface T1Match {
   outcome: "win" | "loss" | null;
 }
 
-/** 최종적으로 ICS VEVENT 하나를 생성하기 위한 입력값. */
 export interface CalendarEventInput {
   uid: string;
   start: Date;

@@ -1,7 +1,7 @@
 import ical, { ICalAlarmType } from "ical-generator";
 import type { CalendarEventInput } from "./types";
 
-const REMINDER_SECONDS_BEFORE_START = 30 * 60; // 경기 시작 30분 전 알림
+const REMINDER_SECONDS_BEFORE_START = 30 * 60;
 
 export function buildCalendar(events: CalendarEventInput[]): string {
   const calendar = ical({

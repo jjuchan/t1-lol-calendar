@@ -8,7 +8,6 @@ function buildUid(matchId: string): string {
   return `t1-${matchId}@${UID_DOMAIN}`;
 }
 
-/** T1 팀과 상대팀을 순서에 상관없이 찾아준다. 못 찾으면 null. */
 function splitTeams(teams: LolEsportsTeam[]): { t1: LolEsportsTeam; opponent: LolEsportsTeam } | null {
   if (teams.length !== 2) return null;
   const [first, second] = teams as [LolEsportsTeam, LolEsportsTeam];
@@ -18,7 +17,6 @@ function splitTeams(teams: LolEsportsTeam[]): { t1: LolEsportsTeam; opponent: Lo
   return null;
 }
 
-/** 원본 일정 중 "T1 1군" 경기만 골라 정규화된 형태로 반환한다. */
 export function filterT1Matches(events: ScheduleEventWithCompetition[]): T1Match[] {
   const matches: T1Match[] = [];
 

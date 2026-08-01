@@ -11,11 +11,6 @@ function toText(value: TextValue): string {
   return typeof value === "string" ? value : value.val;
 }
 
-/**
- * 이전에 생성된 t1.ics를 읽어 uid -> 이벤트 맵으로 되돌린다.
- * Riot API의 일정 조회는 "현재 시점 근처"의 롤링 윈도우만 내려주기 때문에, 그 창을 벗어난
- * 과거 경기 기록을 계속 보존하려면 매번 이전 결과물을 읽어 새 결과와 병합해야 한다.
- */
 function readExistingEvents(path: string): Map<string, CalendarEventInput> {
   const map = new Map<string, CalendarEventInput>();
 
@@ -58,19 +53,9 @@ function readExistingEvents(path: string): Map<string, CalendarEventInput> {
 
 function isWithinRetention(event: CalendarEventInput, now: Date): boolean {
   const cutoff = now.getTime() - PAST_MATCH_RETENTION_DAYS * 24 * 60 * 60 * 1000;
-  // 아직 시작하지 않았거나 진행 중/최근에 끝난 경기는 유지하고, 그보다 오래 전에
-  // 끝난 경기만 정리한다.
   return event.end.getTime() >= cutoff;
 }
 
-/**
- * 새로 가져온 경기 데이터를 기존 t1.ics 내용과 병합한다.
- * - 같은 uid가 이미 있으면(예: 경기 결과가 나와 SUMMARY/DESCRIPTION만 갱신되는 경우)
- *   새 데이터로 덮어써서 "같은 일정이 업데이트"되도록 한다.
- * - 이번 수집 결과에 없는 uid(=API 윈도우 밖으로 밀려난 경기)는 최근 것이면 유지한다.
- * - PAST_MATCH_RETENTION_DAYS보다 오래 전에 끝난 경기는 구독 캘린더가 무한히
- *   커지지 않도록 자동으로 제거한다.
- */
 export function mergeWithExisting(
   newMatches: CalendarEventInput[],
   existingPath: string,

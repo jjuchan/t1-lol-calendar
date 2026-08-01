@@ -3,7 +3,6 @@ import { fetchSchedule } from "./lolesportsClient";
 import { logger } from "./logger";
 import type { FetchFailure, FetchResult, ScheduleEventWithCompetition } from "./types";
 
-/** 활성화된 모든 대회의 일정을 병렬로 가져오고, 실패한 대회는 건너뛰며 기록한다. */
 export async function fetchAllMatches(
   competitions: CompetitionConfig[] = COMPETITIONS.filter((c) => c.enabled)
 ): Promise<FetchResult> {
