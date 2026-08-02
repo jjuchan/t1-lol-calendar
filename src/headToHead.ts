@@ -3,13 +3,13 @@ import { isTargetTeamCode } from "./config/filter";
 import { TBD_CODE } from "./config/teamNames";
 import type { HeadToHeadSummary, LolEsportsTeam, ScheduleEventWithCompetition } from "./types";
 
-interface HeadToHeadEntry {
+interface RawHeadToHeadEntry {
   date: string;
   won: boolean;
   competitionName: string;
 }
 
-export type HeadToHeadIndex = Map<string, HeadToHeadEntry[]>;
+export type HeadToHeadIndex = Map<string, RawHeadToHeadEntry[]>;
 
 export function buildHeadToHeadIndex(events: ScheduleEventWithCompetition[]): HeadToHeadIndex {
   const index: HeadToHeadIndex = new Map();
@@ -60,15 +60,5 @@ export function getRecentHeadToHead(
   if (priorEntries.length === 0) return null;
 
   const recent = priorEntries.slice(-RECENT_HEAD_TO_HEAD_LIMIT);
-  const wins = recent.filter((entry) => entry.won).length;
-
-  const countByCompetition = new Map<string, number>();
-  for (const entry of recent) {
-    countByCompetition.set(entry.competitionName, (countByCompetition.get(entry.competitionName) ?? 0) + 1);
-  }
-  const competitions = Array.from(countByCompetition.entries())
-    .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => b.count - a.count);
-
-  return { wins, losses: recent.length - wins, competitions };
+  return recent.map((entry) => ({ date: new Date(entry.date), won: entry.won, competitionName: entry.competitionName }));
 }

@@ -21,6 +21,13 @@ function formatKstTime(date: Date): string {
   return `${hh}:${mm}`;
 }
 
+function formatKstDate(date: Date): string {
+  const kst = new Date(date.getTime() + KST_OFFSET_MS);
+  const mm = String(kst.getUTCMonth() + 1).padStart(2, "0");
+  const dd = String(kst.getUTCDate()).padStart(2, "0");
+  return `${mm}/${dd}`;
+}
+
 type MatchStatus = "scheduled" | "live" | "win" | "loss" | "no-result" | "postponed" | "cancelled" | "unknown";
 
 function resolveStatus(match: T1Match): MatchStatus {
@@ -87,14 +94,14 @@ export function buildDescription(
   lines.push("");
   lines.push(`T1 vs ${opponent}`);
 
-  if (headToHead) {
-    const competitionPart =
-      headToHead.competitions.length === 1
-        ? headToHead.competitions[0]!.name
-        : headToHead.competitions.map((c) => `${c.name} ${c.count}`).join(" · ");
+  if (headToHead && headToHead.length > 0) {
+    const wins = headToHead.filter((entry) => entry.won).length;
+    const losses = headToHead.length - wins;
     lines.push("");
-    lines.push("최근 상대전적");
-    lines.push(`T1 ${headToHead.wins}승 ${headToHead.losses}패 (${competitionPart})`);
+    lines.push(`최근 상대전적 (${wins}승 ${losses}패)`);
+    for (const entry of headToHead) {
+      lines.push(`${formatKstDate(entry.date)} ${entry.competitionName} ${entry.won ? "승" : "패"}`);
+    }
   }
 
   lines.push("");

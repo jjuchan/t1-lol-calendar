@@ -83,11 +83,13 @@ export interface GroupStandings {
   rows: StandingsRow[];
 }
 
-export interface HeadToHeadSummary {
-  wins: number;
-  losses: number;
-  competitions: { name: string; count: number }[];
+export interface HeadToHeadEntry {
+  date: Date;
+  won: boolean;
+  competitionName: string;
 }
+
+export type HeadToHeadSummary = HeadToHeadEntry[];
 
 export interface ScheduleEventWithCompetition extends LolEsportsScheduleEvent {
   competition: CompetitionConfig;
