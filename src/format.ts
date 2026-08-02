@@ -92,7 +92,7 @@ export function buildDescription(
   const lines: string[] = [];
   lines.push(`🏆 ${match.competitionName}${match.blockName ? ` · ${match.blockName}` : ""}`);
   lines.push("");
-  lines.push(`T1 vs ${opponent}`);
+  lines.push(`T1 vs ${opponent} (Bo${match.bestOf})`);
 
   if (headToHead && headToHead.length > 0) {
     const wins = headToHead.filter((entry) => entry.won).length;
@@ -103,9 +103,6 @@ export function buildDescription(
       lines.push(`${formatKstDate(entry.date)} ${entry.competitionName} ${entry.won ? "승" : "패"}`);
     }
   }
-
-  lines.push("");
-  lines.push(`Bo${match.bestOf}`);
 
   const standingsLines = standings ? buildStandingsLines(standings) : [];
   if (standingsLines.length > 0) {
