@@ -83,6 +83,12 @@ export interface GroupStandings {
   rows: StandingsRow[];
 }
 
+export interface HeadToHeadSummary {
+  wins: number;
+  losses: number;
+  sampleSize: number;
+}
+
 export interface ScheduleEventWithCompetition extends LolEsportsScheduleEvent {
   competition: CompetitionConfig;
 }

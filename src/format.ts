@@ -1,6 +1,6 @@
 import { getTeamDisplay } from "./config/teamNames";
 import { logger } from "./logger";
-import type { CalendarEventInput, GroupStandings, T1Match } from "./types";
+import type { CalendarEventInput, GroupStandings, HeadToHeadSummary, T1Match } from "./types";
 
 const KST_OFFSET_MS = 9 * 60 * 60 * 1000;
 
@@ -74,7 +74,11 @@ function buildStandingsLines(standings: GroupStandings): string[] {
   return lines;
 }
 
-export function buildDescription(match: T1Match, standings: GroupStandings | null = null): string {
+export function buildDescription(
+  match: T1Match,
+  standings: GroupStandings | null = null,
+  headToHead: HeadToHeadSummary | null = null
+): string {
   const opponent = getTeamDisplay(match.opponent.code, match.opponent.name).full;
   const status = resolveStatus(match);
 
@@ -82,6 +86,13 @@ export function buildDescription(match: T1Match, standings: GroupStandings | nul
   lines.push(`🏆 ${match.competitionName}${match.blockName ? ` · ${match.blockName}` : ""}`);
   lines.push("");
   lines.push(`T1 vs ${opponent}`);
+
+  if (headToHead) {
+    lines.push("");
+    lines.push("최근 상대전적");
+    lines.push(`T1 ${headToHead.wins}승 ${headToHead.losses}패 (최근 ${headToHead.sampleSize}경기)`);
+  }
+
   lines.push("");
   lines.push(`Bo${match.bestOf}`);
 
@@ -114,13 +125,17 @@ export function buildDescription(match: T1Match, standings: GroupStandings | nul
   return lines.join("\n");
 }
 
-export function toCalendarEventInput(match: T1Match, standings: GroupStandings | null = null): CalendarEventInput {
+export function toCalendarEventInput(
+  match: T1Match,
+  standings: GroupStandings | null = null,
+  headToHead: HeadToHeadSummary | null = null
+): CalendarEventInput {
   const durationMs = estimatedDurationMinutes(match.bestOf) * 60 * 1000;
   return {
     uid: match.uid,
     start: match.startTime,
     end: new Date(match.startTime.getTime() + durationMs),
     summary: buildSummary(match),
-    description: buildDescription(match, standings),
+    description: buildDescription(match, standings, headToHead),
   };
 }

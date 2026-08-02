@@ -5,6 +5,7 @@ import { fetchAllMatches } from "./fetch";
 import { filterT1Matches } from "./filter";
 import { toCalendarEventInput } from "./format";
 import { buildCalendar } from "./generate";
+import { buildHeadToHeadIndex, getRecentHeadToHead } from "./headToHead";
 import { logger } from "./logger";
 import { mergeWithExisting } from "./merge";
 import { buildLeagueStandingsContext, standingsAsOf } from "./standings";
@@ -30,6 +31,8 @@ async function main(): Promise<void> {
   const t1Matches = filterT1Matches(events);
   logger.info(`T1 1군 경기 ${t1Matches.length}건 필터링 완료`);
 
+  const headToHeadIndex = buildHeadToHeadIndex(events);
+
   const standingsContextByLeagueId = new Map<string, LeagueStandingsContext | null>();
   for (const competition of enabled) {
     if (!competition.showStandings) continue;
@@ -45,7 +48,8 @@ async function main(): Promise<void> {
   const calendarInputs = t1Matches.map((match) => {
     const context = standingsContextByLeagueId.get(match.leagueId) ?? null;
     const standings = context ? standingsAsOf(context, match.startTime.toISOString()) : null;
-    return toCalendarEventInput(match, standings);
+    const headToHead = getRecentHeadToHead(headToHeadIndex, match.opponent.code, match.startTime.toISOString());
+    return toCalendarEventInput(match, standings, headToHead);
   });
   const merged = mergeWithExisting(calendarInputs, OUTPUT_PATH);
   const ics = buildCalendar(merged);
