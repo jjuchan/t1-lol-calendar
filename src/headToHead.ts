@@ -6,6 +6,7 @@ import type { HeadToHeadSummary, LolEsportsTeam, ScheduleEventWithCompetition } 
 interface HeadToHeadEntry {
   date: string;
   won: boolean;
+  competitionName: string;
 }
 
 export type HeadToHeadIndex = Map<string, HeadToHeadEntry[]>;
@@ -33,7 +34,7 @@ export function buildHeadToHeadIndex(events: ScheduleEventWithCompetition[]): He
 
     const won = (t1.result?.gameWins ?? 0) > (opponent.result?.gameWins ?? 0);
     const list = index.get(opponent.code) ?? [];
-    list.push({ date: event.startTime, won });
+    list.push({ date: event.startTime, won, competitionName: event.competition.name });
     index.set(opponent.code, list);
   }
 
@@ -60,5 +61,14 @@ export function getRecentHeadToHead(
 
   const recent = priorEntries.slice(-RECENT_HEAD_TO_HEAD_LIMIT);
   const wins = recent.filter((entry) => entry.won).length;
-  return { wins, losses: recent.length - wins, sampleSize: recent.length };
+
+  const countByCompetition = new Map<string, number>();
+  for (const entry of recent) {
+    countByCompetition.set(entry.competitionName, (countByCompetition.get(entry.competitionName) ?? 0) + 1);
+  }
+  const competitions = Array.from(countByCompetition.entries())
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count);
+
+  return { wins, losses: recent.length - wins, competitions };
 }

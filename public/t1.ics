@@ -8,14 +8,14 @@ X-WR-CALDESC:T1 LCK/MSI/Worlds/EWC/First Stand/KeSPA Cup 1군 경기 일
 BEGIN:VEVENT
 UID:t1-116929405094115536@t1-lol-calendar
 SEQUENCE:0
-DTSTAMP:20260802T150806Z
+DTSTAMP:20260802T150955Z
 DTSTART:20260727T081500Z
 DTEND:20260727T090000Z
 SUMMARY:T1 1:0 DK
 DESCRIPTION:🏆 KeSPA Cup · Groups\n\nT1 vs Dplus KIA\n\n최근 상대
- 전적\nT1 1승 0패 (최근 1경기)\n\nBo1\n\n경기 시작\n17:15 (KST)
- \n\n결과\nT1 1 : 0 Dplus KIA\n\n중계\nhttps://lolesports.com/schedule?
- leagueId=116929044967296666
+ 전적\nT1 1승 0패 (KeSPA Cup)\n\nBo1\n\n경기 시작\n17:15 (KST)\n\n
+ 결과\nT1 1 : 0 Dplus KIA\n\n중계\nhttps://lolesports.com/schedule?leag
+ ueId=116929044967296666
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT30M
@@ -25,14 +25,14 @@ END:VEVENT
 BEGIN:VEVENT
 UID:t1-116929405398989053@t1-lol-calendar
 SEQUENCE:0
-DTSTAMP:20260802T150806Z
+DTSTAMP:20260802T150955Z
 DTSTART:20260727T094500Z
 DTEND:20260727T103000Z
 SUMMARY:T1 0:1 NS
 DESCRIPTION:🏆 KeSPA Cup · Groups\n\nT1 vs Nongshim RedForce\n\n최근 
- 상대전적\nT1 0승 1패 (최근 1경기)\n\nBo1\n\n경기 시작\n18:45
-  (KST)\n\n결과\nT1 0 : 1 Nongshim RedForce\n\n중계\nhttps://lolesports
- .com/schedule?leagueId=116929044967296666
+ 상대전적\nT1 0승 1패 (KeSPA Cup)\n\nBo1\n\n경기 시작\n18:45 (KST
+ )\n\n결과\nT1 0 : 1 Nongshim RedForce\n\n중계\nhttps://lolesports.com/
+ schedule?leagueId=116929044967296666
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT30M
@@ -42,14 +42,14 @@ END:VEVENT
 BEGIN:VEVENT
 UID:t1-116929405012523201@t1-lol-calendar
 SEQUENCE:0
-DTSTAMP:20260802T150806Z
+DTSTAMP:20260802T150955Z
 DTSTART:20260727T111500Z
 DTEND:20260727T120000Z
 SUMMARY:T1 1:0 DNS
 DESCRIPTION:🏆 KeSPA Cup · Groups\n\nT1 vs DN SOOPers\n\n최근 상대
- 전적\nT1 1승 0패 (최근 1경기)\n\nBo1\n\n경기 시작\n20:15 (KST)
- \n\n결과\nT1 1 : 0 DN SOOPers\n\n중계\nhttps://lolesports.com/schedule
- ?leagueId=116929044967296666
+ 전적\nT1 1승 0패 (KeSPA Cup)\n\nBo1\n\n경기 시작\n20:15 (KST)\n\n
+ 결과\nT1 1 : 0 DN SOOPers\n\n중계\nhttps://lolesports.com/schedule?lea
+ gueId=116929044967296666
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT30M
@@ -59,16 +59,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:t1-115548147900553461@t1-lol-calendar
 SEQUENCE:0
-DTSTAMP:20260802T150806Z
+DTSTAMP:20260802T150955Z
 DTSTART:20260729T100000Z
 DTEND:20260729T113000Z
 SUMMARY:T1 0:2 KT
 DESCRIPTION:🏆 LCK · Week 10\n\nT1 vs KT Rolster\n\n최근 상대전적
- \nT1 2승 1패 (최근 3경기)\n\nBo3\n\nLegend Group\n1위 HLE 15승3패
-  (세트 32-11)\n2위 GEN 14승4패 (세트 30-11)\n3위 T1 14승5패 (세
- 트 30-12)\n4위 KT 14승5패 (세트 28-15)\n5위 DK 11승7패 (세트 24
- -18)\n\n경기 시작\n19:00 (KST)\n\n결과\nT1 0 : 2 KT Rolster\n\n중
- 계\nhttps://lolesports.com/schedule?leagueId=98767991310872058
+ \nT1 2승 1패 (LCK 2 · Worlds 1)\n\nBo3\n\nLegend Group\n1위 HLE 15승3
+ 패 (세트 32-11)\n2위 GEN 14승4패 (세트 30-11)\n3위 T1 14승5패 (
+ 세트 30-12)\n4위 KT 14승5패 (세트 28-15)\n5위 DK 11승7패 (세트
+  24-18)\n\n경기 시작\n19:00 (KST)\n\n결과\nT1 0 : 2 KT Rolster\n\n
+ 중계\nhttps://lolesports.com/schedule?leagueId=98767991310872058
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT30M
@@ -78,16 +78,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:t1-115548147900553457@t1-lol-calendar
 SEQUENCE:0
-DTSTAMP:20260802T150806Z
+DTSTAMP:20260802T150955Z
 DTSTART:20260731T080000Z
 DTEND:20260731T093000Z
 SUMMARY:T1 2:0 GEN
 DESCRIPTION:🏆 LCK · Week 10\n\nT1 vs Gen.G\n\n최근 상대전적\nT1 
- 4승 1패 (최근 5경기)\n\nBo3\n\nLegend Group\n1위 HLE 15승4패 (세
- 트 33-13)\n2위 T1 15승5패 (세트 32-12)\n3위 GEN 14승5패 (세트 3
- 0-13)\n4위 KT 14승5패 (세트 28-15)\n5위 DK 12승7패 (세트 26-19)\
- n\n경기 시작\n17:00 (KST)\n\n결과\nT1 2 : 0 Gen.G\n\n중계\nhttps:/
- /lolesports.com/schedule?leagueId=98767991310872058
+ 4승 1패 (LCK 3 · EWC 1 · KeSPA Cup 1)\n\nBo3\n\nLegend Group\n1위 HLE
+  15승4패 (세트 33-13)\n2위 T1 15승5패 (세트 32-12)\n3위 GEN 14
+ 승5패 (세트 30-13)\n4위 KT 14승5패 (세트 28-15)\n5위 DK 12승7
+ 패 (세트 26-19)\n\n경기 시작\n17:00 (KST)\n\n결과\nT1 2 : 0 Gen.G
+ \n\n중계\nhttps://lolesports.com/schedule?leagueId=98767991310872058
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT30M
@@ -97,14 +97,14 @@ END:VEVENT
 BEGIN:VEVENT
 UID:t1-116929376557102156@t1-lol-calendar
 SEQUENCE:0
-DTSTAMP:20260802T150806Z
+DTSTAMP:20260802T150955Z
 DTSTART:20260803T103000Z
 DTEND:20260803T120000Z
 SUMMARY:T1-NS
 DESCRIPTION:🏆 KeSPA Cup · Play In Knockouts\n\nT1 vs Nongshim RedForce
- \n\n최근 상대전적\nT1 0승 1패 (최근 1경기)\n\nBo3\n\n경기 
- 시작\n19:30 (KST)\n\n중계\nhttps://lolesports.com/schedule?leagueId=11
- 6929044967296666
+ \n\n최근 상대전적\nT1 0승 1패 (KeSPA Cup)\n\nBo3\n\n경기 시작\
+ n19:30 (KST)\n\n중계\nhttps://lolesports.com/schedule?leagueId=116929044
+ 967296666
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT30M
@@ -114,16 +114,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:t1-115548147900553465@t1-lol-calendar
 SEQUENCE:0
-DTSTAMP:20260802T150806Z
+DTSTAMP:20260802T150955Z
 DTSTART:20260806T100000Z
 DTEND:20260806T113000Z
 SUMMARY:T1-DK
 DESCRIPTION:🏆 LCK · Week 11\n\nT1 vs Dplus KIA\n\n최근 상대전적\
- nT1 1승 0패 (최근 1경기)\n\nBo3\n\nLegend Group\n1위 T1 15승5패 (
- 세트 32-12)\n2위 HLE 15승5패 (세트 34-15)\n3위 KT 15승5패 (세
- 트 30-16)\n4위 GEN 14승6패 (세트 30-15)\n5위 DK 13승7패 (세트 2
- 8-19)\n\n경기 시작\n19:00 (KST)\n\n중계\nhttps://lolesports.com/sche
- dule?leagueId=98767991310872058
+ nT1 1승 0패 (KeSPA Cup)\n\nBo3\n\nLegend Group\n1위 T1 15승5패 (세
+ 트 32-12)\n2위 HLE 15승5패 (세트 34-15)\n3위 KT 15승5패 (세트 3
+ 0-16)\n4위 GEN 14승6패 (세트 30-15)\n5위 DK 13승7패 (세트 28-19)
+ \n\n경기 시작\n19:00 (KST)\n\n중계\nhttps://lolesports.com/schedule?
+ leagueId=98767991310872058
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT30M
@@ -133,12 +133,12 @@ END:VEVENT
 BEGIN:VEVENT
 UID:t1-115548147900487905@t1-lol-calendar
 SEQUENCE:0
-DTSTAMP:20260802T150806Z
+DTSTAMP:20260802T150955Z
 DTSTART:20260808T080000Z
 DTEND:20260808T093000Z
 SUMMARY:T1-HLE
 DESCRIPTION:🏆 LCK · Week 11\n\nT1 vs Hanwha Life Esports\n\n최근 상
- 대전적\nT1 1승 1패 (최근 2경기)\n\nBo3\n\nLegend Group\n1위 T1 1
+ 대전적\nT1 1승 1패 (LCK 1 · EWC 1)\n\nBo3\n\nLegend Group\n1위 T1 1
  5승5패 (세트 32-12)\n2위 HLE 15승5패 (세트 34-15)\n3위 KT 15승5
  패 (세트 30-16)\n4위 GEN 14승6패 (세트 30-15)\n5위 DK 13승7패 (
  세트 28-19)\n\n경기 시작\n17:00 (KST)\n\n중계\nhttps://lolesports.
@@ -152,16 +152,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:t1-115548147900619041@t1-lol-calendar
 SEQUENCE:0
-DTSTAMP:20260802T150806Z
+DTSTAMP:20260802T150955Z
 DTSTART:20260814T080000Z
 DTEND:20260814T093000Z
 SUMMARY:T1-DK
 DESCRIPTION:🏆 LCK · Week 12\n\nT1 vs Dplus KIA\n\n최근 상대전적\
- nT1 1승 0패 (최근 1경기)\n\nBo3\n\nLegend Group\n1위 T1 15승5패 (
- 세트 32-12)\n2위 HLE 15승5패 (세트 34-15)\n3위 KT 15승5패 (세
- 트 30-16)\n4위 GEN 14승6패 (세트 30-15)\n5위 DK 13승7패 (세트 2
- 8-19)\n\n경기 시작\n17:00 (KST)\n\n중계\nhttps://lolesports.com/sche
- dule?leagueId=98767991310872058
+ nT1 1승 0패 (KeSPA Cup)\n\nBo3\n\nLegend Group\n1위 T1 15승5패 (세
+ 트 32-12)\n2위 HLE 15승5패 (세트 34-15)\n3위 KT 15승5패 (세트 3
+ 0-16)\n4위 GEN 14승6패 (세트 30-15)\n5위 DK 13승7패 (세트 28-19)
+ \n\n경기 시작\n17:00 (KST)\n\n중계\nhttps://lolesports.com/schedule?
+ leagueId=98767991310872058
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT30M
@@ -171,16 +171,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:t1-115548147900619033@t1-lol-calendar
 SEQUENCE:0
-DTSTAMP:20260802T150806Z
+DTSTAMP:20260802T150955Z
 DTSTART:20260816T080000Z
 DTEND:20260816T093000Z
 SUMMARY:T1-GEN
 DESCRIPTION:🏆 LCK · Week 12\n\nT1 vs Gen.G\n\n최근 상대전적\nT1 
- 4승 1패 (최근 5경기)\n\nBo3\n\nLegend Group\n1위 T1 15승5패 (세
- 트 32-12)\n2위 HLE 15승5패 (세트 34-15)\n3위 KT 15승5패 (세트 3
- 0-16)\n4위 GEN 14승6패 (세트 30-15)\n5위 DK 13승7패 (세트 28-19)
- \n\n경기 시작\n17:00 (KST)\n\n중계\nhttps://lolesports.com/schedule?
- leagueId=98767991310872058
+ 4승 1패 (LCK 3 · EWC 1 · KeSPA Cup 1)\n\nBo3\n\nLegend Group\n1위 T1 
+ 15승5패 (세트 32-12)\n2위 HLE 15승5패 (세트 34-15)\n3위 KT 15승
+ 5패 (세트 30-16)\n4위 GEN 14승6패 (세트 30-15)\n5위 DK 13승7패 
+ (세트 28-19)\n\n경기 시작\n17:00 (KST)\n\n중계\nhttps://lolesports
+ .com/schedule?leagueId=98767991310872058
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT30M
@@ -190,16 +190,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:t1-115548147900619037@t1-lol-calendar
 SEQUENCE:0
-DTSTAMP:20260802T150806Z
+DTSTAMP:20260802T150955Z
 DTSTART:20260821T100000Z
 DTEND:20260821T113000Z
 SUMMARY:T1-KT
 DESCRIPTION:🏆 LCK · Week 13\n\nT1 vs KT Rolster\n\n최근 상대전적
- \nT1 2승 1패 (최근 3경기)\n\nBo3\n\nLegend Group\n1위 T1 15승5패 
- (세트 32-12)\n2위 HLE 15승5패 (세트 34-15)\n3위 KT 15승5패 (세
- 트 30-16)\n4위 GEN 14승6패 (세트 30-15)\n5위 DK 13승7패 (세트 2
- 8-19)\n\n경기 시작\n19:00 (KST)\n\n중계\nhttps://lolesports.com/sche
- dule?leagueId=98767991310872058
+ \nT1 2승 1패 (LCK 2 · Worlds 1)\n\nBo3\n\nLegend Group\n1위 T1 15승5
+ 패 (세트 32-12)\n2위 HLE 15승5패 (세트 34-15)\n3위 KT 15승5패 (
+ 세트 30-16)\n4위 GEN 14승6패 (세트 30-15)\n5위 DK 13승7패 (세
+ 트 28-19)\n\n경기 시작\n19:00 (KST)\n\n중계\nhttps://lolesports.com
+ /schedule?leagueId=98767991310872058
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT30M
@@ -209,12 +209,12 @@ END:VEVENT
 BEGIN:VEVENT
 UID:t1-115548147900553481@t1-lol-calendar
 SEQUENCE:0
-DTSTAMP:20260802T150806Z
+DTSTAMP:20260802T150955Z
 DTSTART:20260823T080000Z
 DTEND:20260823T093000Z
 SUMMARY:T1-HLE
 DESCRIPTION:🏆 LCK · Week 13\n\nT1 vs Hanwha Life Esports\n\n최근 상
- 대전적\nT1 1승 1패 (최근 2경기)\n\nBo3\n\nLegend Group\n1위 T1 1
+ 대전적\nT1 1승 1패 (LCK 1 · EWC 1)\n\nBo3\n\nLegend Group\n1위 T1 1
  5승5패 (세트 32-12)\n2위 HLE 15승5패 (세트 34-15)\n3위 KT 15승5
  패 (세트 30-16)\n4위 GEN 14승6패 (세트 30-15)\n5위 DK 13승7패 (
  세트 28-19)\n\n경기 시작\n17:00 (KST)\n\n중계\nhttps://lolesports.

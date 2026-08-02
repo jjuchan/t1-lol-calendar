@@ -88,9 +88,13 @@ export function buildDescription(
   lines.push(`T1 vs ${opponent}`);
 
   if (headToHead) {
+    const competitionPart =
+      headToHead.competitions.length === 1
+        ? headToHead.competitions[0]!.name
+        : headToHead.competitions.map((c) => `${c.name} ${c.count}`).join(" · ");
     lines.push("");
     lines.push("최근 상대전적");
-    lines.push(`T1 ${headToHead.wins}승 ${headToHead.losses}패 (최근 ${headToHead.sampleSize}경기)`);
+    lines.push(`T1 ${headToHead.wins}승 ${headToHead.losses}패 (${competitionPart})`);
   }
 
   lines.push("");

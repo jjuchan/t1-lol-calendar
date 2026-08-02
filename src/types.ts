@@ -86,7 +86,7 @@ export interface GroupStandings {
 export interface HeadToHeadSummary {
   wins: number;
   losses: number;
-  sampleSize: number;
+  competitions: { name: string; count: number }[];
 }
 
 export interface ScheduleEventWithCompetition extends LolEsportsScheduleEvent {
