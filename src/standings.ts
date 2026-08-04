@@ -79,6 +79,7 @@ export async function buildLeagueStandingsContext(leagueId: string): Promise<Lea
 
       const wa = a.result?.gameWins ?? 0;
       const wb = b.result?.gameWins ?? 0;
+      if (wa === wb) continue; // Riot API가 completed로 표시했지만 스코어 반영이 아직 안 된 경우
 
       for (const [code, setWins, setLosses] of [
         [a.code, wa, wb],

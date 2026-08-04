@@ -32,7 +32,11 @@ export function buildHeadToHeadIndex(events: ScheduleEventWithCompetition[]): He
       continue;
     }
 
-    const won = (t1.result?.gameWins ?? 0) > (opponent.result?.gameWins ?? 0);
+    const t1Wins = t1.result?.gameWins ?? 0;
+    const opponentWins = opponent.result?.gameWins ?? 0;
+    if (t1Wins === opponentWins) continue; // Riot API가 completed로 표시했지만 스코어 반영이 아직 안 된 경우
+
+    const won = t1Wins > opponentWins;
     const list = index.get(opponent.code) ?? [];
     list.push({ date: event.startTime, won, competitionName: event.competition.name });
     index.set(opponent.code, list);
