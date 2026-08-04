@@ -6,7 +6,7 @@ const KST_OFFSET_MS = 9 * 60 * 60 * 1000;
 
 const ESTIMATED_DURATION_MINUTES: Record<number, number> = {
   1: 45,
-  3: 90,
+  3: 120,
   5: 150,
 };
 

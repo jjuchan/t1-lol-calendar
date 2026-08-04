@@ -56,7 +56,7 @@ export function getRecentHeadToHead(
   if (!entries || entries.length === 0) return null;
 
   const cutoffMs = new Date(cutoffIsoDateTime).getTime();
-  const priorEntries = entries.filter((entry) => new Date(entry.date).getTime() <= cutoffMs);
+  const priorEntries = entries.filter((entry) => new Date(entry.date).getTime() < cutoffMs);
   if (priorEntries.length === 0) return null;
 
   const recent = priorEntries.slice(-RECENT_HEAD_TO_HEAD_LIMIT);

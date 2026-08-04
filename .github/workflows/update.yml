@@ -2,8 +2,8 @@ name: Update T1 Calendar
 
 on:
   schedule:
-    # 매일 8번 (3시간 간격, UTC 기준). 필요하면 자유롭게 조정하세요.
-    - cron: "0 */3 * * *"
+    # 30분 간격 (UTC 기준). 필요하면 자유롭게 조정하세요.
+    - cron: "*/30 * * * *"
   workflow_dispatch: {}
 
 permissions:
