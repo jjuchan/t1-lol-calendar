@@ -2,8 +2,8 @@ name: Update T1 Calendar
 
 on:
   schedule:
-    # 30분 간격 (UTC 기준). 필요하면 자유롭게 조정하세요.
-    - cron: "*/30 * * * *"
+    # 30분 간격 (UTC 기준). 정각/30분은 전 세계 크론이 몰려 GitHub이 지연시키는 경우가 많아 7분/37분으로 비껴둠.
+    - cron: "7,37 * * * *"
   workflow_dispatch: {}
 
 permissions:
