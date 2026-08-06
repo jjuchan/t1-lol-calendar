@@ -6,8 +6,9 @@ const API_BASE = "https://esports-api.lolesports.com/persisted/gw";
 const API_KEY = "0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z";
 
 const REQUEST_TIMEOUT_MS = 10_000;
-const MAX_ATTEMPTS = 3;
-const RETRY_BASE_DELAY_MS = 1_000;
+const MAX_ATTEMPTS = 4;
+const RETRY_BASE_DELAY_MS = 2_000;
+const RETRY_JITTER_MS = 1_000;
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -45,7 +46,8 @@ async function request<T>(path: string): Promise<T> {
       const message = error instanceof Error ? error.message : String(error);
       logger.warn(`API 요청 실패 (${path}, 시도 ${attempt}/${MAX_ATTEMPTS}): ${message}`);
       if (attempt < MAX_ATTEMPTS) {
-        await sleep(RETRY_BASE_DELAY_MS * attempt);
+        const jitter = Math.random() * RETRY_JITTER_MS;
+        await sleep(RETRY_BASE_DELAY_MS * attempt + jitter);
       }
     }
   }
