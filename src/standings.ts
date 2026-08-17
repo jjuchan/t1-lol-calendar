@@ -53,7 +53,11 @@ export async function buildLeagueStandingsContext(leagueId: string): Promise<Lea
     const { current, previous } = pickCurrentAndPrevious(tournaments, today);
     if (!current) return null;
 
-    const currentStandings = await fetchStandings(current.id);
+    const sinceIsoDate = previous?.startDate ?? current.startDate;
+    const [currentStandings, events] = await Promise.all([
+      fetchStandings(current.id),
+      fetchScheduleSince(leagueId, sinceIsoDate),
+    ]);
     const groupByCode = extractGroupMembership(currentStandings);
 
     const t1Group = groupByCode.get(TARGET_CODE);
@@ -62,9 +66,6 @@ export async function buildLeagueStandingsContext(leagueId: string): Promise<Lea
     const groupCodes = Array.from(groupByCode.entries())
       .filter(([, group]) => group === t1Group)
       .map(([code]) => code);
-
-    const sinceIsoDate = previous?.startDate ?? current.startDate;
-    const events = await fetchScheduleSince(leagueId, sinceIsoDate);
 
     const matchLogByCode = new Map<string, MatchLogEntry[]>();
     for (const code of groupCodes) matchLogByCode.set(code, []);
