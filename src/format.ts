@@ -75,7 +75,9 @@ function buildStandingsLines(standings: GroupStandings): string[] {
   const lines: string[] = [];
   lines.push(`${standings.groupName ?? "순위"}`);
   for (const row of standings.rows) {
-    const setPart = row.setWins + row.setLosses > 0 ? ` (세트 ${row.setWins}-${row.setLosses})` : "";
+    const setDiff = row.setWins - row.setLosses;
+    const setDiffPart = setDiff > 0 ? `+${setDiff}` : `${setDiff}`;
+    const setPart = row.setWins + row.setLosses > 0 ? ` (세트 ${row.setWins}-${row.setLosses}, 득실 ${setDiffPart})` : "";
     lines.push(`${row.rank}위 ${row.code} ${row.wins}승${row.losses}패${setPart}`);
   }
   return lines;
