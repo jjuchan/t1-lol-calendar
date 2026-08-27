@@ -1,6 +1,5 @@
 import * as fs from "node:fs";
 import * as ical from "node-ical";
-import { PAST_MATCH_RETENTION_DAYS } from "./config/retention";
 import { logger } from "./logger";
 import type { CalendarEventInput } from "./types";
 
@@ -51,15 +50,9 @@ function readExistingEvents(path: string): Map<string, CalendarEventInput> {
   return map;
 }
 
-function isWithinRetention(event: CalendarEventInput, now: Date): boolean {
-  const cutoff = now.getTime() - PAST_MATCH_RETENTION_DAYS * 24 * 60 * 60 * 1000;
-  return event.end.getTime() >= cutoff;
-}
-
 export function mergeWithExisting(
   newMatches: CalendarEventInput[],
-  existingPath: string,
-  now: Date = new Date()
+  existingPath: string
 ): CalendarEventInput[] {
   const merged = readExistingEvents(existingPath);
 
@@ -74,12 +67,10 @@ export function mergeWithExisting(
     merged.set(match.uid, match);
   }
 
-  const beforePruneCount = merged.size;
-  const result = Array.from(merged.values()).filter((event) => isWithinRetention(event, now));
-  const prunedCount = beforePruneCount - result.length;
+  const result = Array.from(merged.values());
 
   logger.info(
-    `병합 결과: 신규 ${added}건, 갱신 ${updated}건, 보관기간(${PAST_MATCH_RETENTION_DAYS}일) 초과로 제거 ${prunedCount}건, 최종 ${result.length}건`
+    `병합 결과: 신규 ${added}건, 갱신 ${updated}건, 과거 경기 보존, 최종 ${result.length}건`
   );
 
   return result.sort((a, b) => a.start.getTime() - b.start.getTime());

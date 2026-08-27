@@ -26,7 +26,8 @@ GitHub Pages(Settings → Pages → Source: GitHub Actions)에 배포한다. Act
 - `src/config/competitions.ts` — 수집 대상 대회(leagueId) 추가/삭제
 - `src/config/filter.ts` — T1 판별 기준(`TARGET_TEAM_CODE`) / 2군·아카데미 제외 규칙
 - `src/config/teamNames.ts` — 팀 코드 -> 표시 이름 매핑 (스폰서명 바뀌면 여기만 수정)
-- `src/config/retention.ts` — 종료 경기 보관 기간(기본 7일)
+
+과거 경기는 제거하지 않고 `t1.ics`에 계속 보존한다.
 
 ## 참고
 

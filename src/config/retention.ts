@@ -1,1 +1,0 @@
-export const PAST_MATCH_RETENTION_DAYS = 7;
