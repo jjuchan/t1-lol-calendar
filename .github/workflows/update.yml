@@ -37,6 +37,8 @@ jobs:
 
       - name: Fetch latest schedule and regenerate t1.ics
         run: npm run generate
+        env:
+          LOLESPORTS_API_KEY: ${{ vars.LOLESPORTS_API_KEY }}
 
       - name: Commit updated t1.ics
         run: |

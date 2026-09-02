@@ -3,7 +3,18 @@ import type { LolEsportsScheduleEvent, LolEsportsStandingsResponse, LolEsportsTo
 
 const API_BASE = "https://esports-api.lolesports.com/persisted/gw";
 
-const API_KEY = "0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z";
+// lolesports 비공식 API 키. lolesports.com 프론트엔드에 박혀 있는 공개 상수라
+// 비밀은 아니지만, 소스에서 분리해 환경변수로 주입한다. 로컬은 .env(.env.example 참고),
+// CI는 GitHub Actions Variable(LOLESPORTS_API_KEY)로 전달.
+const apiKeyFromEnv = process.env.LOLESPORTS_API_KEY;
+
+if (!apiKeyFromEnv) {
+  throw new Error(
+    "환경변수 LOLESPORTS_API_KEY 가 설정되지 않았습니다. .env.example 을 복사해 .env 를 만들거나 환경변수를 주입하세요."
+  );
+}
+
+const API_KEY: string = apiKeyFromEnv;
 
 const REQUEST_TIMEOUT_MS = 10_000;
 const MAX_ATTEMPTS = 4;

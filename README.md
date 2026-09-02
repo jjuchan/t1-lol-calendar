@@ -8,8 +8,9 @@ T1 1군 경기(LCK, MSI, Worlds, EWC, First Stand, KeSPA Cup)만 모은 구독�
 
 ```bash
 npm install
+cp .env.example .env   # lolesports API 키 (공개 상수)
 npm run build
-npm run generate   # public/t1.ics 생성/갱신
+npm run generate       # public/t1.ics 생성/갱신
 ```
 
 - `npm run dev` : 컴파일 없이 바로 실행
@@ -17,9 +18,12 @@ npm run generate   # public/t1.ics 생성/갱신
 
 ## 자동 갱신
 
-`.github/workflows/update.yml`이 3시간마다 자동 실행되어 `public/t1.ics`를 갱신하고
+`.github/workflows/update.yml`이 30분마다 자동 실행되어 `public/t1.ics`를 갱신하고
 GitHub Pages(Settings → Pages → Source: GitHub Actions)에 배포한다. Actions 탭에서
 `Run workflow`로 수동 실행도 가능.
+
+API 키는 저장소 Variable `LOLESPORTS_API_KEY`(Settings → Secrets and variables →
+Actions → Variables)로 주입한다. 비밀이 아닌 공개 상수라 Secret이 아닌 Variable.
 
 ## 설정 파일
 

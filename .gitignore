@@ -4,3 +4,4 @@ dist/
 *.log
 .claude/
 LOCAL_NOTES.md
+.env
