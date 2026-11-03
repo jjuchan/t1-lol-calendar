@@ -42,8 +42,8 @@ jobs:
 
       - name: Commit updated t1.ics
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "jjuchan"
+          git config user.email "163832764+jjuchan@users.noreply.github.com"
           git add public/t1.ics
           if git diff --cached --quiet; then
             echo "변경 사항 없음 - 커밋을 건너뜁니다."
